@@ -10,41 +10,41 @@ const english = {
   navExperience: "Experience",
   navResources: "Resources",
   navStart: "Get started",
-  heroFirst: "By your side.",
-  heroSecond: "On your team.",
+  heroFirst: "A desktop companion",
+  heroSecond: "that works with you.",
   heroDescription:
-    "Talk, share a space, and get things done. Real-time voice, character expression and agent collaboration, together on your desktop.",
-  exploreResources: "Explore resources",
+    "Amadeus is an AI character on your desktop. Talk by voice or text, interrupt a spoken response, and delegate tasks to execution agents. Follow their progress and results in one workspace.",
+  exploreResources: "Browse resources",
   watchDemo: "Watch demo",
-  sourceAvailable: "Open source · A work in progress",
+  sourceAvailable: "Open source · Alpha release",
   heroAlt: "Amadeus character brand illustration in mint-green halftone",
   brandArtwork: "Brand artwork",
   coreExperience: "Core experience",
-  principleTalk: "Connect",
-  principleEmbody: "Be present",
-  principleAct: "Delegate",
-  principleControl: "Stay in charge",
-  experienceTitle: "Beyond the conversation.",
+  principleTalk: "Voice and text",
+  principleEmbody: "Animated character",
+  principleAct: "Task delegation",
+  principleControl: "Permission controls",
+  experienceTitle: "Delegate in plain language.",
   experienceIntro:
-    "From a few words to a finished task.\nSee the process. Stay in control.",
+    "Describe the task, and Amadeus assigns it to an execution agent. You can follow its progress and stop the task when needed.",
   demoAria: "Watch the Amadeus demo on Bilibili",
   workspaceAlt:
     "The Amadeus workspace showing a character, task progress and results",
   fullDemo: "Watch the full demo",
-  featureVoice: "A two-way conversation",
+  featureVoice: "Interrupt a spoken response.",
   featureVoiceBody:
-    "Speak or type naturally, and interrupt when you need to. Subtitles, lip sync and expressions follow actual speech playback.",
-  featureWork: "Work you can follow",
+    "Use voice or text, and interrupt speech playback when needed. Subtitles and mouth animation follow the audio; expressions change with the conversation.",
+  featureWork: "Progress in one workspace.",
   featureWorkBody:
-    "Delegate tasks to specialized agents. Follow progress, artifacts and results in the same workspace.",
-  featureControl: "Your call, throughout",
+    "Execution agents handle tasks. Progress, intermediate outputs and final results appear in the same workspace.",
+  featureControl: "Clear permission requests.",
   featureControlBody:
-    "Permission requests stay visible. Continue, retry or take over to keep the collaboration in your hands.",
+    "When an execution agent needs additional permission, it shows a request. You can approve or deny it, or stop the task.",
   demoNote:
     "Footage shows a project prototype. The interface is evolving; see the documentation for current capabilities and configuration.",
-  resourcesTitle: "A voice. A character.\nA space of your own.",
+  resourcesTitle: "Add a voice and a character.",
   resourcesIntro:
-    "Choose the voice, character and scene resources you need.\nStart with text, then make your desktop your own.",
+    "Voice, character and scene packs are installed separately. Download what you need; text chat and tasks work without these packs.",
   resourcesNotice:
     "Resource links are being prepared. Cloud storage links will be added here. These are independent asset packs, not desktop installers.",
   installGuide: "Installation guide",
@@ -63,29 +63,29 @@ const english = {
   rightsScope:
     "This is an unofficial project. It does not represent the original rights holders or voice actors, nor does it imply their authorization or endorsement. This notice grants no asset license; educational or non-commercial use does not itself establish permission. Use and redistribution remain subject to the rights holders’ permissions and applicable law. These assets are not licensed under the Amadeus source-code license.",
   rightsSource: "Official copyright credit ↗",
-  startTitle: "Make the first connection.",
+  startTitle: "Getting started",
   startIntro:
-    "Explore the current Source Alpha.\nStart with the basics, then add what you need.",
+    "Amadeus is available as an alpha source release. Set up text chat first, then add voice and character support as needed.",
   stepOne: "Run from source",
   stepOneBody:
-    "Follow the setup guide for your system. Begin with L1 text Chat and Work, then configure your models and execution providers.",
+    "Follow the setup guide for your operating system and configure a model connection. Check that text chat and task execution work before adding more features.",
   quickstart: "Quick start",
-  stepTwo: "Choose your experience",
+  stepTwo: "Choose a voice profile",
   stepTwoBody:
-    "Pick an installation profile for voice. Voice, character and scene packs are separate, so you can add only what you need.",
+    "For voice support, choose remote APIs or local models using the installation guide. Add character and scene packs as needed.",
   profiles: "Installation profiles",
-  stepThree: "Install, then connect",
+  stepThree: "Install packs and check Settings",
   stepThreeBody:
-    "Verify and install asset bundles from the project directory. Check your models, voice and character status in Settings.",
+    "Verify and install each pack using its instructions, then check model, voice and character status in Settings.",
   assetGuide: "Asset installation guide",
   terminalDescription:
     "Replace asset-bundle.zip with the path to your downloaded pack. Run from the repository root.",
   terminalLabel: "After completing the base setup",
   copy: "Copy commands",
-  communityTitle: "Build what comes next.",
+  communityTitle: "Contribute to Amadeus",
   communityBody:
-    "Explore the source, share feedback or start creating your own character resources.",
-  sourceCode: "Explore the source",
+    "Report an issue, contribute code, or create your own character resources.",
+  sourceCode: "View source code",
   feedback: "Issues & feedback",
   authoring: "Character authoring guide",
   licenseNote:
@@ -287,8 +287,8 @@ function setLanguage(nextLanguage) {
       : "Code Amadeus — 项目与资源中心";
   document.querySelector('meta[name="description"]').content =
     language === "en"
-      ? "Code Amadeus: a real-time multimodal desktop agent. Explore the project, run from source and find voice, character and scene resources."
-      : "Code Amadeus：实时多模态桌面智能体。探索项目、从源码开始，获取语音、角色与场景资源。";
+      ? "Code Amadeus: a desktop app for voice and text chat, animated characters and task delegation. Find setup guides and voice, character and scene packs."
+      : "Code Amadeus：支持语音与文字对话、角色呈现和任务委派的桌面应用。查看安装说明，下载语音、角色与场景资源。";
   for (const node of document.querySelectorAll("[data-i18n]")) {
     const value = translation[node.dataset.i18n];
     node.replaceChildren();
