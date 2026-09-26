@@ -13,7 +13,14 @@
       "zh": "本地识别 · 需匹配本地模型依赖",
       "en": "Local ASR · Requires local model dependencies"
     },
-    "mirrors": { "baidu": null, "quark": null, "mega": null, "google": null }
+    "mirrors": {
+      "baidu": null,
+      "quark": null,
+      "mega": null,
+      "google": {
+        "url": "https://drive.google.com/drive/folders/1sdWfLf9dA2tzqX1To6zePiO4mMPt87Vy"
+      }
+    }
   },
   {
     "id": "voice-kurisu-gpt-sovits-v3",
@@ -29,7 +36,14 @@
       "zh": "默认本地语音配置 · GPT-SoVITS v3",
       "en": "Default local voice profile · GPT-SoVITS v3"
     },
-    "mirrors": { "baidu": null, "quark": null, "mega": null, "google": null }
+    "mirrors": {
+      "baidu": null,
+      "quark": null,
+      "mega": null,
+      "google": {
+        "url": "https://drive.google.com/drive/folders/174_rykOCiNnVT99qXncOSkHUWv6G_DC8"
+      }
+    }
   },
   {
     "id": "character-kurisu",
@@ -45,7 +59,14 @@
       "zh": "可选角色资源 · 不含创作工程",
       "en": "Optional character pack · Runtime assets only"
     },
-    "mirrors": { "baidu": null, "quark": null, "mega": null, "google": null }
+    "mirrors": {
+      "baidu": null,
+      "quark": null,
+      "mega": null,
+      "google": {
+        "url": "https://drive.google.com/drive/folders/1xih325-ErKpVzZodrD6Hh4ev5TumV7PI"
+      }
+    }
   },
   {
     "id": "visual-runtime",
@@ -61,7 +82,14 @@
       "zh": "可选美术资源 · 独立于角色包安装",
       "en": "Optional visual resources · Installed separately"
     },
-    "mirrors": { "baidu": null, "quark": null, "mega": null, "google": null }
+    "mirrors": {
+      "baidu": null,
+      "quark": null,
+      "mega": null,
+      "google": {
+        "url": "https://drive.google.com/drive/folders/1tkLqycWKEDH5tXp3exCwsKz4odLt42MD"
+      }
+    }
   },
   {
     "id": "companion-kurisu",
@@ -77,7 +105,14 @@
       "zh": "轻量美术资源 · 无需完整壁纸角色包",
       "en": "Lightweight portraits · No full character pack needed"
     },
-    "mirrors": { "baidu": null, "quark": null, "mega": null, "google": null }
+    "mirrors": {
+      "baidu": null,
+      "quark": null,
+      "mega": null,
+      "google": {
+        "url": "https://drive.google.com/drive/folders/1pwLDynzTax1yMTosAocGzaH9Ww6gw4-_"
+      }
+    }
   },
   {
     "id": "voice-kurisu-gpt-sovits-v2pro-experimental",
@@ -93,6 +128,13 @@
       "zh": "实验性 · 需先安装 v3 语音包",
       "en": "Experimental · Install the v3 voice pack first"
     },
-    "mirrors": { "baidu": null, "quark": null, "mega": null, "google": null }
+    "mirrors": {
+      "baidu": null,
+      "quark": null,
+      "mega": null,
+      "google": {
+        "url": "https://drive.google.com/drive/folders/1192bM60I2fUgxf9bnlTxeH2TwQ_CovVZ"
+      }
+    }
   }
 ]
