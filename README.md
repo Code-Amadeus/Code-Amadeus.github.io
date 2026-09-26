@@ -1,67 +1,73 @@
-# Code Amadeus 官网与资源中心
+# Code Amadeus Website & Resource Library
 
-独立静态站点：**https://code-amadeus.github.io/**
+Standalone website: **https://code-amadeus.github.io/**
 
-与 [Amadeus 主程序](https://github.com/Code-Amadeus/Amadeus) 分开维护。
-提供中英文介绍、演示入口、源码入门，以及语音、角色与场景资源目录。
-不构建或发布桌面安装程序。
+Maintained independently of the [Amadeus desktop application](https://github.com/Code-Amadeus/Amadeus).
+The site provides a bilingual project introduction, demo links, source setup guidance,
+and a catalog of voice, character, and scene resources. It does not build or distribute desktop installers.
 
-## 补充网盘资源
+## Adding resource links
 
-编辑根目录的 **`resources.json`**。每项资源预留四个网盘入口：
+Edit **`resources.json`** in the repository root. Each resource has four cloud storage entries:
 
-| 字段 | 网盘 |
+| Key | Service |
 | --- | --- |
-| `baidu` | 百度网盘 |
-| `quark` | 夸克网盘 |
+| `baidu` | Baidu Pan |
+| `quark` | Quark Pan |
 | `mega` | MEGA |
 | `google` | Google Drive |
 
-`null` 表示尚未提供链接，网站会显示不可点击的“待补充”。有实际链接后改成：
+A `null` value means no link is available; the site displays a non-clickable "Coming soon" placeholder.
+Once you have a real share link, replace the corresponding entry with:
 
 ```json
 "baidu": {
-  "url": "https://pan.baidu.com/s/你的真实分享链接",
-  "code": "你的提取码"
+  "url": "https://pan.baidu.com/s/YOUR_SHARE_LINK",
+  "code": "YOUR_ACCESS_CODE"
 }
 ```
 
-无需提取码时省略 `code`。MEGA 链接保留 `#` 后的完整解密部分。
-URL 使用 HTTPS；没有链接的入口继续保留 `null`。填入链接后，资源卡片状态自动更新。
+Omit `code` if no access code is required. For MEGA, preserve the full link, including
+the decryption key after `#`. Use HTTPS URLs and keep unavailable entries as `null`.
+Resource cards update their availability status automatically when links are added.
 
-`title`、`description`、`detail` 分别包含中文 `zh` 和英文 `en`。
-`category` 为 `voice` 或 `art`；`id` 应与主程序支持的资源包对应。
-资源文档以主程序的 [外部资产包说明](https://github.com/Code-Amadeus/Amadeus/blob/main/docs/external_asset_bundles.md) 为准。
+Each `title`, `description`, and `detail` contains Chinese (`zh`) and English (`en`) text.
+Set `category` to `voice` or `art`; each `id` should match a resource pack supported by the application.
+See the application's [external asset bundle documentation](https://github.com/Code-Amadeus/Amadeus/blob/main/docs/external_asset_bundles.md)
+for resource contracts and installation details.
 
-## 修改文案与版本
+## Editing content and version information
 
-- `index.html`：结构、中文文案和版权声明。
-- `app.js`：英文文案、资源筛选和下载入口显示。
-- `styles.css`：桌面与手机布局。
-- `site.json`：网站展示的主程序版本；主程序版本发布后按实际情况更新。
-- `resources.json`：资源信息及网盘链接。
+- `index.html`: page structure, Chinese copy, and rights notices.
+- `app.js`: English copy, resource filtering, and download link rendering.
+- `styles.css`: desktop and mobile layouts.
+- `site.json`: the application version displayed on the site; update it to reflect application releases.
+- `resources.json`: resource descriptions and cloud storage links.
 
-## 本地预览
+## Local preview
 
-需要 Python 3.10+，只使用标准库，不需要安装主程序或 npm 依赖。
+Requires Python 3.10+ and uses only the standard library. No application installation or npm dependencies are needed.
 
 ```powershell
 python build.py
 python -m http.server 4173 --bind 127.0.0.1 --directory build/site
 ```
 
-打开 http://127.0.0.1:4173 。修改后重新构建并刷新。
-构建只包含明确列出的页面、资源清单和两张展示图，不复制模型或运行时资源包。
+Open http://127.0.0.1:4173. Rebuild and refresh after making changes.
+The build includes only the explicitly listed site files, resource catalog, and two demonstration images.
+It does not copy models or runtime asset packs.
 
-## 发布
+## Deployment
 
-推送到 `main` 后，GitHub Actions 自动构建并部署到 GitHub Pages。
-也可以在 Actions 手动运行 **Website Pages**。
-仓库 Settings → Pages 的 Source 应为 **GitHub Actions**。
-不涉及主程序测试、Electron 构建或安装包发布。
+Pushing to `main` automatically builds and deploys the site to GitHub Pages through GitHub Actions.
+You can also run the **Website Pages** workflow manually from the Actions tab.
+In repository Settings → Pages, set Source to **GitHub Actions**.
+Deployment does not run the application's test suite, build Electron, or publish desktop installers.
 
-## 许可证与展示素材
+## License and demonstration assets
 
-网站第一方代码沿用 AGPL-3.0，见 `LICENSE`。
-角色、语音、模型、原作内容和演示素材保留各自权利；代码许可证不授予这些素材的使用或再分发许可。
-素材出处见 [assets/README.md](assets/README.md)，页面资源区另有中英文 Kurisu 使用声明。
+First-party website code is licensed under AGPL-3.0; see `LICENSE`.
+Characters, voices, models, original-work content, and demonstration media retain their respective rights.
+The code license does not grant permission to use or redistribute those assets.
+See [assets/README.md](assets/README.md) for asset provenance. The resource section also includes
+Chinese and English notices covering Kurisu-related character and voice content.
