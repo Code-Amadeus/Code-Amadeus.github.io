@@ -117,6 +117,7 @@ const ui = {
     art: "角色与美术",
     guide: "查看资源说明",
     code: "提取码",
+    archivePassword: "解压密码",
     count: (n) => `${String(n).padStart(2, "0")} 项资源`,
     copied: "已复制命令",
     copyFailed: "复制未完成，请选中上方命令手动复制。",
@@ -137,6 +138,7 @@ const ui = {
     art: "CHARACTERS & ART",
     guide: "Read pack documentation",
     code: "Access code",
+    archivePassword: "Archive password",
     count: (n) => `${String(n).padStart(2, "0")} RESOURCES`,
     copied: "Commands copied",
     copyFailed:
@@ -255,6 +257,14 @@ function renderResources() {
       if (mirror?.code)
         wrapper.append(
           element("span", "mirror-code", `${labels.code}: ${mirror.code}`),
+        );
+      if (mirror?.archive_password)
+        wrapper.append(
+          element(
+            "span",
+            "mirror-code",
+            `${labels.archivePassword}: ${mirror.archive_password}`,
+          ),
         );
       mirrors.append(wrapper);
     }

@@ -41,8 +41,9 @@ def build():
             url = urlparse(mirror["url"])
             if url.scheme != "https" or not url.netloc or url.username or url.password:
                 raise ValueError(f"Expected an HTTPS share URL: {resource_id}/{provider}")
-            if "code" in mirror and not isinstance(mirror["code"], str):
-                raise ValueError(f"Access code must be text: {resource_id}/{provider}")
+            for field in ("code", "archive_password"):
+                if field in mirror and not isinstance(mirror[field], str):
+                    raise ValueError(f"{field} must be text: {resource_id}/{provider}")
 
     version = json.loads((SOURCE / "site.json").read_text(encoding="utf-8"))["version"]
     template = (SOURCE / "index.html").read_text(encoding="utf-8")

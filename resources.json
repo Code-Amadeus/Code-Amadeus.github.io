@@ -15,7 +15,10 @@
     },
     "mirrors": {
       "baidu": null,
-      "quark": null,
+      "quark": {
+        "url": "https://pan.quark.cn/s/2f2cb5d814df",
+        "archive_password": "code-amadeus"
+      },
       "mega": null,
       "google": {
         "url": "https://drive.google.com/drive/folders/1sdWfLf9dA2tzqX1To6zePiO4mMPt87Vy"
@@ -38,7 +41,10 @@
     },
     "mirrors": {
       "baidu": null,
-      "quark": null,
+      "quark": {
+        "url": "https://pan.quark.cn/s/f3955ec26444",
+        "archive_password": "code-amadeus"
+      },
       "mega": null,
       "google": {
         "url": "https://drive.google.com/drive/folders/174_rykOCiNnVT99qXncOSkHUWv6G_DC8"
@@ -61,7 +67,10 @@
     },
     "mirrors": {
       "baidu": null,
-      "quark": null,
+      "quark": {
+        "url": "https://pan.quark.cn/s/ae03a8c9006e",
+        "archive_password": "code-amadeus"
+      },
       "mega": null,
       "google": {
         "url": "https://drive.google.com/drive/folders/1xih325-ErKpVzZodrD6Hh4ev5TumV7PI"
@@ -84,7 +93,10 @@
     },
     "mirrors": {
       "baidu": null,
-      "quark": null,
+      "quark": {
+        "url": "https://pan.quark.cn/s/06aacb388661",
+        "archive_password": "code-amadeus"
+      },
       "mega": null,
       "google": {
         "url": "https://drive.google.com/drive/folders/1tkLqycWKEDH5tXp3exCwsKz4odLt42MD"
@@ -107,7 +119,10 @@
     },
     "mirrors": {
       "baidu": null,
-      "quark": null,
+      "quark": {
+        "url": "https://pan.quark.cn/s/b406ebe76220",
+        "archive_password": "code-amadeus"
+      },
       "mega": null,
       "google": {
         "url": "https://drive.google.com/drive/folders/1pwLDynzTax1yMTosAocGzaH9Ww6gw4-_"
@@ -130,7 +145,10 @@
     },
     "mirrors": {
       "baidu": null,
-      "quark": null,
+      "quark": {
+        "url": "https://pan.quark.cn/s/44ca0c27e183",
+        "archive_password": "code-amadeus"
+      },
       "mega": null,
       "google": {
         "url": "https://drive.google.com/drive/folders/1192bM60I2fUgxf9bnlTxeH2TwQ_CovVZ"

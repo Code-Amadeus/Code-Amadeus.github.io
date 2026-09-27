@@ -31,6 +31,10 @@ Omit `code` if no access code is required. For MEGA, preserve the full link, inc
 the decryption key after `#`. Use HTTPS URLs and keep unavailable entries as `null`.
 Resource cards update their availability status automatically when links are added.
 
+If a mirror's ZIP requires a password to extract, set `archive_password` on that
+mirror entry. The site labels it as an archive password, separately from the
+optional cloud-share access `code`. Other mirrors remain unaffected.
+
 Each `title`, `description`, and `detail` contains Chinese (`zh`) and English (`en`) text.
 Set `category` to `voice` or `art`; each `id` should match a resource pack supported by the application.
 See the application's [external asset bundle documentation](https://github.com/Code-Amadeus/Amadeus/blob/main/docs/external_asset_bundles.md)
