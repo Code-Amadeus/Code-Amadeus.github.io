@@ -122,7 +122,7 @@ const ui = {
     copied: "已复制命令",
     copyFailed: "复制未完成，请选中上方命令手动复制。",
     noticeReady:
-      "部分资源已提供网盘链接，其余入口仍在准备中。资源包独立安装，不包含桌面安装程序。",
+      "选择下方网盘入口下载资源。资源包独立安装，不包含桌面安装程序。",
     mirrors: {
       baidu: "百度网盘",
       quark: "夸克网盘",
@@ -144,7 +144,7 @@ const ui = {
     copyFailed:
       "Could not copy. Select the commands above and copy them manually.",
     noticeReady:
-      "Some resource links are available; the remaining links are being prepared. These are independent asset packs, not desktop installers.",
+      "Choose a cloud storage link below to download resources. These are independent asset packs, not desktop installers.",
     mirrors: {
       baidu: "Baidu Pan",
       quark: "Quark Pan",
@@ -235,6 +235,7 @@ function renderResources() {
     );
     const mirrors = element("div", "mirror-list");
     for (const [provider, mirror] of Object.entries(resource.mirrors)) {
+      if (provider === "mega" && !mirror) continue;
       const wrapper = element("div", "mirror-wrap");
       const link = element(
         mirror ? "a" : "span",

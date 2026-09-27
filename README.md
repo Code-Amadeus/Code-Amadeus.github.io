@@ -18,6 +18,7 @@ Edit **`resources.json`** in the repository root. Each resource has four cloud s
 | `google` | Google Drive |
 
 A `null` value means no link is available; the site displays a non-clickable "Coming soon" placeholder.
+MEGA is optional: its entry is hidden while `null` and appears automatically when a link is added.
 Once you have a real share link, replace the corresponding entry with:
 
 ```json
