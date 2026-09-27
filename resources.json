@@ -14,7 +14,10 @@
       "en": "Local ASR · Requires local model dependencies"
     },
     "mirrors": {
-      "baidu": null,
+      "baidu": {
+        "url": "https://pan.baidu.com/s/1DB5dZUDUsKH2e5Bw7u_rkw?pwd=m5t1",
+        "code": "m5t1"
+      },
       "quark": {
         "url": "https://pan.quark.cn/s/d2c0253a078d"
       },
@@ -39,7 +42,10 @@
       "en": "Default local voice profile · GPT-SoVITS v3"
     },
     "mirrors": {
-      "baidu": null,
+      "baidu": {
+        "url": "https://pan.baidu.com/s/1pMhIX0-zmVIZbByQS0VEsA?pwd=pa4m",
+        "code": "pa4m"
+      },
       "quark": {
         "url": "https://pan.quark.cn/s/528fbce7ddc1"
       },
@@ -64,7 +70,10 @@
       "en": "Optional character pack · Runtime assets only"
     },
     "mirrors": {
-      "baidu": null,
+      "baidu": {
+        "url": "https://pan.baidu.com/s/1zc-fyoQp9-enRbFtwITWFg?pwd=tr66",
+        "code": "tr66"
+      },
       "quark": {
         "url": "https://pan.quark.cn/s/ae909783d07d"
       },
@@ -89,7 +98,10 @@
       "en": "Optional visual resources · Installed separately"
     },
     "mirrors": {
-      "baidu": null,
+      "baidu": {
+        "url": "https://pan.baidu.com/s/15ejmvvtTDQfYm_AVqF3MuQ?pwd=gqqv",
+        "code": "gqqv"
+      },
       "quark": {
         "url": "https://pan.quark.cn/s/7281616e1d11"
       },
@@ -114,7 +126,10 @@
       "en": "Lightweight portraits · No full character pack needed"
     },
     "mirrors": {
-      "baidu": null,
+      "baidu": {
+        "url": "https://pan.baidu.com/s/1nf7x3Euz4i2FvK1-BtCb9w?pwd=whp3",
+        "code": "whp3"
+      },
       "quark": {
         "url": "https://pan.quark.cn/s/85568804a059"
       },
@@ -139,7 +154,10 @@
       "en": "Experimental · Install the v3 voice pack first"
     },
     "mirrors": {
-      "baidu": null,
+      "baidu": {
+        "url": "https://pan.baidu.com/s/1yaLr4cHlp2otMUTHxItpAw?pwd=xqr9",
+        "code": "xqr9"
+      },
       "quark": {
         "url": "https://pan.quark.cn/s/beb063ed72ee"
       },
