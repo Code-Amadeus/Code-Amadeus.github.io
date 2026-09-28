@@ -1,78 +1,95 @@
-# Code Amadeus Website & Resource Library
+# Code Amadeus — Website & Resource Library
 
-Standalone website: **https://code-amadeus.github.io/**
+The official home page of [Amadeus](https://github.com/Code-Amadeus/Amadeus), an AI companion that lives on your desktop.
 
-Maintained independently of the [Amadeus desktop application](https://github.com/Code-Amadeus/Amadeus).
-The site provides a bilingual project introduction, demo links, source setup guidance,
-and a catalog of voice, character, and scene resources. It does not build or distribute desktop installers.
+**Visit: https://code-amadeus.github.io/**
 
-## Adding resource links
+![Code Amadeus home page](docs/screenshots/hero-red.webp)
 
-Edit **`resources.json`** in the repository root. Each resource has four cloud storage entries:
+## What's on the site
 
-| Key | Service |
+- **Meet Amadeus** — what the app does, with a short demo: talk by voice or text, see the character on screen, and hand tasks off to agents.
+- **Resource library** — voice packs, character animations, scenes and portraits, each with one-click download links for Baidu Pan, Quark Pan and Google Drive. Share links already include their passwords.
+- **Get started** — three steps from a fresh install to a fully voiced character.
+- **Always current** — the version number shown on the page follows the latest Amadeus release automatically.
+- **Two looks** — the red-and-black palette of the original Amadeus artwork by default, or a CRT green. The choice is remembered.
+- **中文 / English** — switch languages at any time from the top bar.
+- **Works on phones** — every section adapts to small screens.
+
+## Preview
+
+| Red & black (default) | CRT green |
 | --- | --- |
-| `baidu` | Baidu Pan |
-| `quark` | Quark Pan |
-| `mega` | MEGA |
-| `google` | Google Drive |
+| ![Home page, red and black theme](docs/screenshots/hero-red.webp) | ![Home page, CRT green theme](docs/screenshots/hero-crt.webp) |
+| ![Resource library, red and black theme](docs/screenshots/resources-red.webp) | ![Resource library, CRT green theme](docs/screenshots/resources-crt.webp) |
 
-A `null` value means no link is available; the site displays a non-clickable "Coming soon" placeholder.
-MEGA is optional: its entry is hidden while `null` and appears automatically when a link is added.
-Once you have a real share link, replace the corresponding entry with:
+On mobile:
+
+![Mobile layout in both themes](docs/screenshots/mobile.webp)
+
+## Deploy your own copy
+
+The site is hosted for free on GitHub Pages and publishes itself — no server to manage.
+
+1. **Fork** this repository.
+2. In your fork, open **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. Open the **Actions** tab and enable workflows (forks have them switched off by default).
+4. Push to `main`, or run **Website Pages** from the Actions tab.
+
+A minute or two later the site is live at `https://<your-username>.github.io/Code-Amadeus.github.io/`.
+From then on, every push to `main` republishes it, and it refreshes itself every six hours
+to pick up new Amadeus releases.
+
+<details>
+<summary>Show a new release immediately</summary>
+
+Instead of waiting for the next scheduled refresh, the Amadeus release process can ping the site:
+
+```sh
+gh api repos/Code-Amadeus/Code-Amadeus.github.io/dispatches -f event_type=amadeus-release
+```
+
+This needs a token that can write to this repository, stored as a secret in the Amadeus repository.
+
+</details>
+
+## Preview on your computer
+
+Install [Node.js](https://nodejs.org/) 22.12 or newer, then:
+
+```sh
+npm install
+npm run dev
+```
+
+Open http://localhost:4321 — the page reloads as you edit.
+
+## Updating download links
+
+All resources live in one file, **`resources.json`**. Each resource has an entry per cloud drive:
 
 ```json
-"baidu": {
-  "url": "https://pan.baidu.com/s/YOUR_SHARE_LINK",
-  "code": "YOUR_ACCESS_CODE"
+"mirrors": {
+  "baidu":  { "url": "https://pan.baidu.com/s/…?pwd=abcd" },
+  "quark":  { "url": "https://pan.quark.cn/s/…" },
+  "mega":   null,
+  "google": { "url": "https://drive.google.com/drive/folders/…" }
 }
 ```
 
-Omit `code` if no access code is required. For MEGA, preserve the full link, including
-the decryption key after `#`. Use HTTPS URLs and keep unavailable entries as `null`.
-Resource cards update their availability status automatically when links are added.
+- Use `null` while a link isn't ready — the card shows "Coming soon". MEGA stays hidden until it has a link.
+- If a link doesn't carry its own password, add `"code": "abcd"` and the card will show it.
+- If the download is a password-protected ZIP, add `"archive_password": "…"`.
+- Every title and description has a Chinese (`zh`) and English (`en`) version.
 
-If a mirror's ZIP requires a password to extract, set `archive_password` on that
-mirror entry. The site labels it as an archive password, separately from the
-optional cloud-share access `code`. Other mirrors remain unaffected.
+Mistakes such as a missing translation or a non-HTTPS link stop the site from publishing, so a broken card never goes live.
+For what each resource pack contains, see the Amadeus
+[resource pack guide](https://github.com/Code-Amadeus/Amadeus/blob/main/docs/external_asset_bundles.md).
 
-Each `title`, `description`, and `detail` contains Chinese (`zh`) and English (`en`) text.
-Set `category` to `voice` or `art`; each `id` should match a resource pack supported by the application.
-See the application's [external asset bundle documentation](https://github.com/Code-Amadeus/Amadeus/blob/main/docs/external_asset_bundles.md)
-for resource contracts and installation details.
+## License
 
-## Editing content and version information
-
-- `index.html`: page structure, Chinese copy, and rights notices.
-- `app.js`: English copy, resource filtering, and download link rendering.
-- `styles.css`: desktop and mobile layouts.
-- `site.json`: the application version displayed on the site; update it to reflect application releases.
-- `resources.json`: resource descriptions and cloud storage links.
-
-## Local preview
-
-Requires Python 3.10+ and uses only the standard library. No application installation or npm dependencies are needed.
-
-```powershell
-python build.py
-python -m http.server 4173 --bind 127.0.0.1 --directory build/site
-```
-
-Open http://127.0.0.1:4173. Rebuild and refresh after making changes.
-The build includes only the explicitly listed site files, resource catalog, and two demonstration images.
-It does not copy models or runtime asset packs.
-
-## Deployment
-
-Pushing to `main` automatically builds and deploys the site to GitHub Pages through GitHub Actions.
-You can also run the **Website Pages** workflow manually from the Actions tab.
-In repository Settings → Pages, set Source to **GitHub Actions**.
-Deployment does not run the application's test suite, build Electron, or publish desktop installers.
-
-## License and demonstration assets
-
-First-party website code is licensed under AGPL-3.0; see `LICENSE`.
-Characters, voices, models, original-work content, and demonstration media retain their respective rights.
-The code license does not grant permission to use or redistribute those assets.
-See [assets/README.md](assets/README.md) for asset provenance. The resource section also includes
-Chinese and English notices covering Kurisu-related character and voice content.
+The website code is licensed under AGPL-3.0 — see [LICENSE](LICENSE).
+Characters, voices, models, original-work content, artwork and the cloud-drive logos belong to their
+respective owners; the code license does not cover them. Their sources are listed in
+[docs/ASSETS.md](docs/ASSETS.md), and the resource section of the site carries Chinese and English
+notices for Kurisu-related character and voice content.

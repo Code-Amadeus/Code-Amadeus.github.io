@@ -1,34 +1,78 @@
+---
+import resources from "../../resources.json";
+import { serializeResources, validateResources } from "../lib/resources.js";
+import { latestVersion } from "../lib/version.js";
+
+const resourceData = serializeResources(validateResources(resources));
+const version = await latestVersion();
+---
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="crimson">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#101b17" />
+    <meta name="theme-color" content="#0c0d11" />
     <meta
       name="description"
       content="Code Amadeus：支持语音与文字对话、角色呈现和任务委派的桌面应用。查看安装说明，下载语音、角色与场景资源。"
     />
-    <meta property="og:title" content="Code Amadeus — 能对话，也能协作。" />
+    <meta property="og:title" content="Code Amadeus — 你好，我是 Amadeus。" />
     <meta
       property="og:description"
       content="Code Amadeus：支持语音与文字对话、角色呈现和任务委派的桌面应用。查看安装说明，下载语音、角色与场景资源。"
     />
     <meta property="og:type" content="website" />
     <title>Code Amadeus — 项目与资源中心</title>
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="stylesheet" href="./styles.css" />
-    <script id="resource-data" type="application/json">
-      __RESOURCE_DATA__
+    <script is:inline>
+      // Apply the saved theme before first paint so the page never flashes the default palette.
+      try {
+        if (localStorage.getItem("amadeus-site-theme") === "crt") {
+          delete document.documentElement.dataset.theme;
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#101b17");
+        }
+      } catch {
+        /* Storage is optional. */
+      }
     </script>
-    <script src="./app.js" defer></script>
+    <script
+      is:inline
+      id="resource-data"
+      type="application/json"
+      set:html={resourceData}
+    />
+    <script is:inline src="./app.js" defer></script>
   </head>
   <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <!-- Remaps the mint artwork by brightness: shadows to black, jade hair to red, pale face to ivory. -->
+      <filter id="crimson-tone" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"
+        />
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0 0.02 0.42 0.6 0.7 0.74 0.78 0.84 0.9 0.93 0.93" />
+          <feFuncG type="table" tableValues="0 0 0.08 0.13 0.17 0.2 0.25 0.45 0.74 0.88 0.9" />
+          <feFuncB type="table" tableValues="0 0 0.07 0.1 0.13 0.16 0.2 0.38 0.66 0.8 0.82" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
     <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
     <header class="site-header">
       <div class="shell nav-inner">
         <a class="brand" href="#" aria-label="Code Amadeus"
-          ><span class="brand-mark" aria-hidden="true">A<span>·</span></span
-          ><span>CODE <strong>AMADEUS</strong></span></a
+          ><img
+            class="brand-mark"
+            src="./assets/logo.png"
+            width="32"
+            height="32"
+            alt=""
+          /><span>CODE <strong>AMADEUS</strong></span></a
         >
         <nav aria-label="主导航" data-i18n-aria="navigation">
           <a href="#experience" data-i18n="navExperience">认识 Amadeus</a>
@@ -37,6 +81,13 @@
         </nav>
         <div class="nav-tools">
           <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="切换为 CRT 绿色主题"
+          >
+            CRT <span aria-hidden="true">◐</span></button
+          ><button
             id="language-toggle"
             class="language-toggle"
             type="button"
@@ -56,13 +107,13 @@
             <span class="status-dot"></span> AI DESKTOP COMPANION
           </div>
           <h1 id="hero-title">
-            <span data-i18n="heroFirst">能对话，</span><br /><span
+            <span data-i18n="heroFirst">你好，</span><br /><span
               class="accent"
               data-i18n="heroSecond"
-              >也能协作。</span
+              >我是 Amadeus。</span
             >
           </h1>
-          <p class="hero-description" data-i18n="heroDescription">Amadeus 是运行在桌面上的 AI 角色。你可以用语音或文字与它交流，也可以打断正在播放的回应。需要处理任务时，可将任务交给执行智能体，并在同一个工作区查看进度与结果。</p>
+          <p class="hero-description" data-i18n="heroDescription">我住在你的桌面上。想聊什么直接说，我会实时回应你，我也很好奇你会说些什么。有事要办就交给我，我会找帮手分头去做，每一步都摊开给你看。</p>
           <div class="hero-actions">
             <a class="button primary" href="#resources"
               ><span data-i18n="exploreResources">浏览资源</span
@@ -75,7 +126,7 @@
             >
           </div>
           <div class="hero-note">
-            <span class="mono">SOURCE ALPHA / __AMADEUS_VERSION__</span
+            <span class="mono">SOURCE ALPHA / {version}</span
             ><span data-i18n="sourceAvailable">源码开放 · Alpha 版本</span>
           </div>
         </div>
@@ -88,7 +139,7 @@
             width="1511"
             height="1041"
             fetchpriority="high"
-            alt="以薄荷绿点阵呈现的 Amadeus 角色品牌插画"
+            alt="以点阵呈现的 Amadeus 角色品牌插画"
             data-i18n-alt="heroAlt"
           />
           <figcaption>
@@ -104,7 +155,7 @@
         aria-label="核心体验"
         data-i18n-aria="coreExperience"
       >
-        <span><b>01</b> TALK <em data-i18n="principleTalk">语音与文字</em></span
+        <span><b>01</b> TALK <em data-i18n="principleTalk">实时对话</em></span
         ><span
           ><b>02</b> EMBODY <em data-i18n="principleEmbody">角色形象</em></span
         ><span><b>03</b> ACT <em data-i18n="principleAct">任务委派</em></span
@@ -359,7 +410,7 @@ python tools/external_assets.py status</code></pre>
       <section class="community shell" aria-labelledby="community-title">
         <div>
           <p class="eyebrow">BUILT IN THE OPEN</p>
-          <h2 id="community-title" data-i18n="communityTitle">参与共建</h2>
+          <h2 id="community-title" data-i18n="communityTitle">实验室招人</h2>
           <p data-i18n="communityBody">欢迎提交问题、改进代码，或制作自己的角色资源。</p>
         </div>
         <div class="community-links">

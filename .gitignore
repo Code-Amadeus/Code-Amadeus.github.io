@@ -1,4 +1,18 @@
-build/
-__pycache__/
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs and local environment
+npm-debug.log*
+*.log
+.env
+.env.*
+
+# Editors and OS
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
