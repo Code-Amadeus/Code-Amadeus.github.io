@@ -10,17 +10,17 @@ const english = {
   navExperience: "Experience",
   navResources: "Resources",
   navStart: "Get started",
-  heroFirst: "A desktop companion",
-  heroSecond: "that works with you.",
+  heroFirst: "Hello.",
+  heroSecond: "I'm Amadeus.",
   heroDescription:
-    "Amadeus is an AI character on your desktop. Talk by voice or text, interrupt a spoken response, and delegate tasks to execution agents. Follow their progress and results in one workspace.",
+    "I live on your desktop. Say whatever's on your mind and I'll answer in real time — I'm curious what you'll say. If there's work to do, leave it to me. I'll bring in help and show you every step.",
   exploreResources: "Browse resources",
   watchDemo: "Watch demo",
   sourceAvailable: "Open source · Alpha release",
-  heroAlt: "Amadeus character brand illustration in mint-green halftone",
+  heroAlt: "Amadeus character brand illustration in dot-matrix halftone",
   brandArtwork: "Brand artwork",
   coreExperience: "Core experience",
-  principleTalk: "Voice and text",
+  principleTalk: "Real-time talk",
   principleEmbody: "Animated character",
   principleAct: "Task delegation",
   principleControl: "Permission controls",
@@ -82,7 +82,7 @@ const english = {
     "Replace asset-bundle.zip with the path to your downloaded pack. Run from the repository root.",
   terminalLabel: "After completing the base setup",
   copy: "Copy commands",
-  communityTitle: "Contribute to Amadeus",
+  communityTitle: "The lab is recruiting.",
   communityBody:
     "Report an issue, contribute code, or create your own character resources.",
   sourceCode: "View source code",
@@ -155,6 +155,7 @@ const ui = {
 };
 let language = "zh";
 let activeFilter = "all";
+let theme = document.documentElement.dataset.theme === "crimson" ? "crimson" : "crt";
 try {
   if (localStorage.getItem("amadeus-site-language") === "en") language = "en";
 } catch {
@@ -234,9 +235,17 @@ function renderResources() {
       element("p", "resource-detail", resource.detail[language]),
     );
     const mirrors = element("div", "mirror-list");
+    const secrets = element("div", "mirror-codes");
+    const secretLine = (provider, label, value) =>
+      element(
+        "span",
+        "mirror-code",
+        language === "zh"
+          ? `${labels.mirrors[provider]}${label}：${value}`
+          : `${labels.mirrors[provider]} ${label.toLowerCase()}: ${value}`,
+      );
     for (const [provider, mirror] of Object.entries(resource.mirrors)) {
       if (provider === "mega" && !mirror) continue;
-      const wrapper = element("div", "mirror-wrap");
       const link = element(
         mirror ? "a" : "span",
         `mirror${mirror ? " available" : ""}`,
@@ -250,26 +259,27 @@ function renderResources() {
       } else {
         link.setAttribute("aria-disabled", "true");
       }
+      const icon = element("img", "mirror-icon");
+      icon.src = `./assets/mirrors/${provider}.png`;
+      icon.width = 22;
+      icon.height = 22;
+      icon.alt = "";
+      link.append(icon, element("span", "mirror-name", labels.mirrors[provider]));
       link.append(
-        element("span", "", labels.mirrors[provider]),
-        element("small", "", mirror ? "↗" : labels.pending),
+        mirror
+          ? element("span", "mirror-arrow", "↗")
+          : element("small", "", labels.pending),
       );
-      wrapper.append(link);
+      mirrors.append(link);
       if (mirror?.code)
-        wrapper.append(
-          element("span", "mirror-code", `${labels.code}: ${mirror.code}`),
-        );
+        secrets.append(secretLine(provider, labels.code, mirror.code));
       if (mirror?.archive_password)
-        wrapper.append(
-          element(
-            "span",
-            "mirror-code",
-            `${labels.archivePassword}: ${mirror.archive_password}`,
-          ),
+        secrets.append(
+          secretLine(provider, labels.archivePassword, mirror.archive_password),
         );
-      mirrors.append(wrapper);
     }
     body.append(mirrors);
+    if (secrets.childElementCount) body.append(secrets);
     const guide = element("a", "resource-doc", `${labels.guide} ↗`);
     guide.href = `${repository}docs/external_asset_bundles.md`;
     body.append(guide);
@@ -285,6 +295,31 @@ function renderResources() {
   ) {
     document.querySelector('[data-i18n="resourcesNotice"]').textContent =
       labels.noticeReady;
+  }
+}
+
+function updateThemeToggle() {
+  const toggle = document.getElementById("theme-toggle");
+  toggle.firstChild.textContent = theme === "crimson" ? "CRT " : "RED ";
+  const labels = {
+    zh: theme === "crimson" ? "切换为 CRT 绿色主题" : "切换为红黑主题",
+    en: theme === "crimson" ? "Switch to CRT green theme" : "Switch to red theme",
+  };
+  toggle.setAttribute("aria-label", labels[language]);
+}
+
+function setTheme(nextTheme) {
+  theme = nextTheme;
+  if (theme === "crimson") document.documentElement.dataset.theme = "crimson";
+  else delete document.documentElement.dataset.theme;
+  document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute("content", theme === "crimson" ? "#0c0d11" : "#101b17");
+  updateThemeToggle();
+  try {
+    localStorage.setItem("amadeus-site-theme", theme);
+  } catch {
+    /* Storage is optional. */
   }
 }
 
@@ -323,6 +358,7 @@ function setLanguage(nextLanguage) {
   );
   document.querySelector('[data-doc="quickstart"]').href =
     `${repository}${language === "en" ? "README.md#quick-start" : "README_ZH.md#快速开始"}`;
+  updateThemeToggle();
   document.getElementById("copy-status").textContent = "";
   try {
     localStorage.setItem("amadeus-site-language", language);
@@ -336,6 +372,11 @@ document
   .getElementById("language-toggle")
   .addEventListener("click", () =>
     setLanguage(language === "zh" ? "en" : "zh"),
+  );
+document
+  .getElementById("theme-toggle")
+  .addEventListener("click", () =>
+    setTheme(theme === "crimson" ? "crt" : "crimson"),
   );
 for (const button of document.querySelectorAll("[data-filter]")) {
   button.addEventListener("click", () => {

@@ -5,6 +5,13 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # The displayed version comes from the latest Amadeus tag, which does not push to this repository.
+  # The Amadeus release workflow can send an "amadeus-release" dispatch for an immediate refresh;
+  # the schedule is a fallback.
+  repository_dispatch:
+    types: [amadeus-release]
+  schedule:
+    - cron: "23 */6 * * *"
 
 permissions:
   contents: read
@@ -18,15 +25,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-node@v7
         with:
-          python-version: "3.12"
+          node-version: 24
+          cache: npm
+      - run: npm ci
       - name: Build static website
-        run: python build.py
+        run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: build/site
+          path: dist
 
   deploy:
     needs: build
