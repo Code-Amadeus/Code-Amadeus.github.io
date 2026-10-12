@@ -46,7 +46,7 @@ const english = {
   resourcesIntro:
     "Voice, character and scene packs are installed separately. Download what you need; text chat and tasks work without these packs.",
   resourcesNotice:
-    "Resource links are being prepared. Cloud storage links will be added here. These are independent asset packs, not desktop installers.",
+    "Choose a cloud storage link below to download resources. These are independent asset packs, not desktop installers.",
   installGuide: "Installation guide",
   filterAria: "Filter resources by type",
   filterAll: "All resources",
