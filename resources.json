@@ -37,7 +37,7 @@
       "en": "Local text-to-speech resources with GPT-SoVITS v3 runtime weights and reference audio."
     },
     "detail": {
-      "zh": "默认本地语音配置 · GPT-SoVITS v3",
+      "zh": "基础 v3 未变 · Google 另附情绪追加包",
       "en": "Default local voice profile · GPT-SoVITS v3"
     },
     "mirrors": {
@@ -60,12 +60,12 @@
     "label": "SPRITEFORGE / CHARACTER",
     "title": { "zh": "Kurisu 角色动画", "en": "Kurisu character" },
     "description": {
-      "zh": "SpriteForge 角色运行包，包含 KTX2 动画、行为与口型配置。",
-      "en": "A SpriteForge character runtime pack with KTX2 animations, behavior and mouth configuration."
+      "zh": "已校色的 SpriteForge 角色包，包含 KTX2、行为与口型配置及 40 组视频（7672 帧）。",
+      "en": "A color-corrected SpriteForge pack with KTX2, behavior/mouth configuration and video for 40 clips (7672 frames)."
     },
     "detail": {
-      "zh": "可选角色资源 · 不含创作工程",
-      "en": "Optional character pack · Runtime assets only"
+      "zh": "2026.10.14 · Google 分卷版；百度/夸克待同步",
+      "en": "2026.10.14 · Google split download; Baidu/Quark sync pending"
     },
     "mirrors": {
       "baidu": {
