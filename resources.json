@@ -3,15 +3,15 @@
     "id": "asr-qwen3-0.6b",
     "category": "voice",
     "visual": "asr",
-    "label": "QWEN3 / ASR",
+    "label": "QWEN3 + SENSEVOICE",
     "title": { "zh": "语音识别模型", "en": "Speech recognition" },
     "description": {
-      "zh": "本地语音识别模型 Qwen3-ASR 0.6B，将语音输入转为文字。",
-      "en": "Local speech recognition with Qwen3-ASR 0.6B, converting spoken input to text."
+      "zh": "Qwen3-ASR 0.6B 与 SenseVoiceSmall 本地识别权重，包含轻量唤醒所需模型。",
+      "en": "Local recognition weights for Qwen3-ASR 0.6B and SenseVoiceSmall, including the lightweight wake model."
     },
     "detail": {
-      "zh": "本地识别 · 需匹配本地模型依赖",
-      "en": "Local ASR · Requires local model dependencies"
+      "zh": "Google 已补 SenseVoice · 百度/夸克待同步",
+      "en": "Google includes SenseVoice; Baidu/Quark sync pending"
     },
     "mirrors": {
       "baidu": {
