@@ -10,15 +10,17 @@
       "en": "Local recognition weights for Qwen3-ASR 0.6B and SenseVoiceSmall, including the lightweight wake model."
     },
     "detail": {
-      "zh": "Google 已补 SenseVoice · 百度/夸克待同步",
-      "en": "Google includes SenseVoice; Baidu/Quark sync pending"
+      "zh": "百度/夸克合集先解压 · Google 分别下载两种权重",
+      "en": "Extract the Baidu/Quark collection first; download both models separately from Google"
     },
     "mirrors": {
       "baidu": {
-        "url": "https://pan.baidu.com/s/1DB5dZUDUsKH2e5Bw7u_rkw?pwd=m5t1"
+        "url": "https://pan.baidu.com/s/1W0q7x7mr412wYI9sq2EcXQ?pwd=jbjk",
+        "code": "jbjk"
       },
       "quark": {
-        "url": "https://pan.quark.cn/s/d2c0253a078d"
+        "url": "https://pan.quark.cn/s/0abd30018864?pwd=5CTQ",
+        "code": "5CTQ"
       },
       "mega": null,
       "google": {
@@ -37,15 +39,17 @@
       "en": "Local text-to-speech resources with GPT-SoVITS v3 runtime weights and reference audio."
     },
     "detail": {
-      "zh": "基础 v3 未变 · Google 另附情绪追加包",
-      "en": "Base V3 unchanged; Google includes an optional emotion add-on"
+      "zh": "百度/夸克含情绪追加 · Google 基础包与情绪包分别下载",
+      "en": "Baidu/Quark include the emotion add-on; Google offers the base and add-on separately"
     },
     "mirrors": {
       "baidu": {
-        "url": "https://pan.baidu.com/s/1pMhIX0-zmVIZbByQS0VEsA?pwd=pa4m"
+        "url": "https://pan.baidu.com/s/1gFG4jlT7480eURxBA-hWyQ?pwd=2j1n",
+        "code": "2j1n"
       },
       "quark": {
-        "url": "https://pan.quark.cn/s/528fbce7ddc1"
+        "url": "https://pan.quark.cn/s/385ed26afe78?pwd=5jCz",
+        "code": "5jCz"
       },
       "mega": null,
       "google": {
@@ -64,15 +68,17 @@
       "en": "A color-corrected SpriteForge pack with KTX2, behavior/mouth configuration and video for 40 clips (7672 frames)."
     },
     "detail": {
-      "zh": "2026.10.14 · Google 分卷版；百度/夸克待同步",
-      "en": "2026.10.14 · Google split download; Baidu/Quark sync pending"
+      "zh": "2026.10.14 · 百度/夸克完整 ZIP；Google 分卷版",
+      "en": "2026.10.14 · Full ZIP on Baidu/Quark; split download on Google"
     },
     "mirrors": {
       "baidu": {
-        "url": "https://pan.baidu.com/s/1zc-fyoQp9-enRbFtwITWFg?pwd=tr66"
+        "url": "https://pan.baidu.com/s/1DCYJBnXm4UmJx_AYxmZKQw?pwd=v6wp",
+        "code": "v6wp"
       },
       "quark": {
-        "url": "https://pan.quark.cn/s/ae909783d07d"
+        "url": "https://pan.quark.cn/s/1cdedc3b2d2f?pwd=p8Yd",
+        "code": "p8Yd"
       },
       "mega": null,
       "google": {
