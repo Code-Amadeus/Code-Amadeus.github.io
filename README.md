@@ -66,7 +66,7 @@ Open http://localhost:4321 — the page reloads as you edit.
 
 ## Updating download links
 
-All resources live in one file, **`resources.json`**. Each resource lists its download providers:
+All resources live in one file, **`resources.json`**. Each resource has an entry per cloud drive:
 
 ```json
 "mirrors": {
@@ -78,8 +78,6 @@ All resources live in one file, **`resources.json`**. Each resource lists its do
 ```
 
 - Use `null` while a link isn't ready — the card shows "Coming soon". MEGA stays hidden until it has a link.
-- Supported providers are `baidu`, `quark`, `mega`, `google`, and `github`. Only include providers relevant to the pack; a GitHub-only pack can use `"mirrors": { "github": { "url": "https://github.com/Code-Amadeus/Amadeus/releases/tag/..." } }`.
-- Publish the optional dictionary as a separate ZIP attached to the application Release, alongside application sources and checksums. The card links to that Release and names the tested application/dictionary pair. Keep resource data versions and filenames immutable; later format changes ship updated resources with the new application, without a promise of indefinite old-pack compatibility.
 - If a link doesn't carry its own password, add `"code": "abcd"` and the card will show it.
 - If the download is a password-protected ZIP, add `"archive_password": "…"`.
 - Every title and description has a Chinese (`zh`) and English (`en`) version.

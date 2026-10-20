@@ -1,6 +1,6 @@
 const CATEGORIES = new Set(["voice", "art"]);
 const VISUALS = new Set(["asr", "voice", "character", "scene", "portrait", "experimental"]);
-const MIRRORS = ["baidu", "quark", "mega", "google", "github"];
+const MIRRORS = ["baidu", "quark", "mega", "google"];
 
 export function validateResources(resources) {
   const seen = new Set();
@@ -25,8 +25,8 @@ export function validateResources(resources) {
       }
     }
     const providers = Object.keys(resource.mirrors ?? {});
-    if (!providers.length || providers.some((name) => !MIRRORS.includes(name))) {
-      throw new Error(`Expected supported download providers for ${id}`);
+    if (providers.length !== MIRRORS.length || !MIRRORS.every((name) => providers.includes(name))) {
+      throw new Error(`Expected four cloud storage entries for ${id}`);
     }
     for (const [provider, mirror] of Object.entries(resource.mirrors)) {
       if (mirror === null) {
