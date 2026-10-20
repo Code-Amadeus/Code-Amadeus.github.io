@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # The displayed version comes from the latest Amadeus tag, which does not push to this repository.
+  # The displayed version comes from the latest published Amadeus Release.
   # The Amadeus release workflow can send an "amadeus-release" dispatch for an immediate refresh;
   # the schedule is a fallback.
   repository_dispatch:
