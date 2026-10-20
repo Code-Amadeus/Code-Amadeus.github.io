@@ -58,6 +58,29 @@
     }
   },
   {
+    "id": "japanese-pronunciation",
+    "category": "voice",
+    "visual": "voice",
+    "label": "JAPANESE / DICTIONARY",
+    "title": {
+      "en": "Japanese pronunciation dictionary",
+      "zh": "日语发音词典"
+    },
+    "description": {
+      "en": "Selected English/name readings for local Japanese GPT-SoVITS: 129 rows, 127 words. Individually checked ledger; human listening and accent acceptance pending.",
+      "zh": "为本地日语 GPT-SoVITS 补充英文及人名读音。129 行、127 词，按逐条检查清单收录；人工试听与重音验收待完成。"
+    },
+    "detail": {
+      "en": "Optional · Shipped with Amadeus 0.17.1 Alpha · Dictionary 2026.10.20.3. Download the application, dictionary and checksums from the same Release.",
+      "zh": "可选 · 随 Amadeus 0.17.1 Alpha 发布 · 词典 2026.10.20.3。应用、词典与校验值在同一 Release 下载。"
+    },
+    "mirrors": {
+      "github": {
+        "url": "https://github.com/Code-Amadeus/Amadeus/releases/tag/v0.17.1-alpha.0"
+      }
+    }
+  },
+  {
     "id": "character-kurisu",
     "category": "art",
     "visual": "character",

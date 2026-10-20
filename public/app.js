@@ -46,7 +46,7 @@ const english = {
   resourcesIntro:
     "Voice, character and scene packs are installed separately. Download what you need; text chat and tasks work without these packs.",
   resourcesNotice:
-    "Choose a cloud storage link below to download resources. These are independent asset packs, not desktop installers.",
+    "Choose a download link below. These are independent asset packs, not desktop installers.",
   installGuide: "Installation guide",
   filterAria: "Filter resources by type",
   filterAll: "All resources",
@@ -122,12 +122,13 @@ const ui = {
     copied: "已复制命令",
     copyFailed: "复制未完成，请选中上方命令手动复制。",
     noticeReady:
-      "选择下方网盘入口下载资源。资源包独立安装，不包含桌面安装程序。",
+      "选择下方入口下载资源。资源包独立安装，不包含桌面安装程序。",
     mirrors: {
       baidu: "百度网盘",
       quark: "夸克网盘",
       mega: "MEGA",
       google: "Google Drive",
+      github: "GitHub Release",
     },
   },
   en: {
@@ -144,12 +145,13 @@ const ui = {
     copyFailed:
       "Could not copy. Select the commands above and copy them manually.",
     noticeReady:
-      "Choose a cloud storage link below to download resources. These are independent asset packs, not desktop installers.",
+      "Choose a download link below. These are independent asset packs, not desktop installers.",
     mirrors: {
       baidu: "Baidu Pan",
       quark: "Quark Pan",
       mega: "MEGA",
       google: "Google Drive",
+      github: "GitHub Release",
     },
   },
 };
@@ -259,12 +261,15 @@ function renderResources() {
       } else {
         link.setAttribute("aria-disabled", "true");
       }
-      const icon = element("img", "mirror-icon");
-      icon.src = `./assets/mirrors/${provider}.png`;
-      icon.width = 22;
-      icon.height = 22;
-      icon.alt = "";
-      link.append(icon, element("span", "mirror-name", labels.mirrors[provider]));
+      if (provider !== "github") {
+        const icon = element("img", "mirror-icon");
+        icon.src = `./assets/mirrors/${provider}.png`;
+        icon.width = 22;
+        icon.height = 22;
+        icon.alt = "";
+        link.append(icon);
+      }
+      link.append(element("span", "mirror-name", labels.mirrors[provider]));
       link.append(
         mirror
           ? element("span", "mirror-arrow", "↗")
